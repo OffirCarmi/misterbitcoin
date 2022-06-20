@@ -1,0 +1,43 @@
+.contact-list {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 25px;
+    justify-items: center;
+
+
+    button {
+        height: 40px;
+        width: 175px;
+        border-radius: 200px;
+        box-shadow: 1px 1px 3px $black-opc;
+        background-color: $white;
+        color: $clr2;
+    }
+
+    .contact-preview {
+        background-color: $brand;
+        height: 40px;
+        width: 175px;
+        line-height: 40px;
+        border-radius: 200px;
+        box-shadow: 1px 1px 3px $black-opc;
+
+        a {
+            color: $bg;
+
+            h2 {
+                font-size: rem(16px);
+                font-weight: 400;
+                word-break: break-word;
+            }
+
+            &:hover {
+                color: $clr2;
+            }
+        }
+    }
+}

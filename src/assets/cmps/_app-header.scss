@@ -1,0 +1,22 @@
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 10px;
+    background-color: $brand;
+    color: $bg;
+
+    nav {
+        display: flex;
+        gap: 20px;
+
+        a {
+            color: $bg;
+        }
+
+        a.router-link-active {
+            color: $clr2;
+        }
+    }
+}
