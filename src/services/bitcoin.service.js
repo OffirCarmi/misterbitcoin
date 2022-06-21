@@ -43,16 +43,30 @@ async function getRate() {
     }
 }
 
-getMarketPrice()
+// data = values.map(value => {
+//     const date = formatTimestamp(value.x * 1000)
+//     const num = value.y.toLocaleString()
+//     return {
+//         date: num
+//     }
+// })
+
 async function getMarketPrice() {
     try {
-        let data = storageService.load('market_DB')
+        let data = storageService.load('marketPrice_DB')
         if (!data || !data.length) {
             const res = await axios.get(MARKET_PRICE_URL)
             const values = res.data.values
-            data = values.map(value => value.x / value.y)
-            // console.log('data from Axios', data)
-            storageService.save('market_DB', data)
+            data = values.reduce((acc, value) => {
+                const date = formatTimestamp(value.x * 1000)
+                const num = value.y
+                acc[0].push(date)
+                acc[1].push(num)
+                return acc
+            }, [[], []])
+            data[0] = data[0].reverse().slice(0, 30).reverse()
+            data[1] = data[1].reverse().slice(0, 30).reverse()
+            storageService.save('marketPrice_DB', data)
         }
         return data
     } catch (err) {
@@ -60,18 +74,30 @@ async function getMarketPrice() {
     }
 }
 
-getConfirmedTransactions()
-
 async function getConfirmedTransactions() {
     try {
         let data = storageService.load('transactions_DB')
         if (!data || !data.length) {
-            data = await axios.get(TRANSACTIONS_URL)
-            // console.log(data);
-            // storageService.save('transactions_DB', data)
+            const res = await axios.get(TRANSACTIONS_URL)
+            const values = res.data.values
+            data = values.reduce((acc, value) => {
+                const date = formatTimestamp(value.x * 1000)
+                const num = value.y
+                acc[0].push(date)
+                acc[1].push(num)
+                return acc
+            }, [[], []])
+            data[0] = data[0].reverse().slice(0, 30).reverse()
+            data[1] = data[1].reverse().slice(0, 30).reverse()
+            storageService.save('transactions_DB', data)
         }
         return data
     } catch (err) {
         console.log('Cannot get data', err)
     }
+}
+
+function formatTimestamp(timestamp) {
+    const date = new Date(timestamp)
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 }

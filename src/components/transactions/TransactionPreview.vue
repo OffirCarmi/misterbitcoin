@@ -1,5 +1,7 @@
 <template>
-    <h4 v-if="isHome">{{ toContact }}</h4>
+    <router-link :to="`/contacts/${contactId}`">
+        <h4 v-if="isHome">{{ contactName }}</h4>
+    </router-link>
     <h4>Transfer of <span>{{ transaction.amount }}</span> coins</h4>
     <h5> {{ date }}</h5>
 </template>
@@ -33,8 +35,11 @@ export default {
             const date = new Date(this.transaction.date)
             return ` at ${date.getDate()}/${date.getMonth()}/${date.getFullYear()} `
         },
-        toContact() {
+        contactName() {
             return this.transaction.to.name
+        },
+        contactId() {
+            return this.transaction.to._id
         }
     }
 

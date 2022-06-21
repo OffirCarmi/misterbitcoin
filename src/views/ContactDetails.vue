@@ -2,16 +2,14 @@
     <section class="contact-details">
         <h1>Contact Details</h1>
         <div v-if="contact" class="contact-data">
-            <button class="btn-back" @click="goBack">Back</button>
+            <div class="actions">
+                <button class="btn-back" @click="goBack">Back</button>
+                <button class="btn-edit" @click="editContact(contact._id)">Edit</button>
+            </div>
             <hr>
             <h2>{{ contact.name }}</h2>
             <h3>{{ contact.phone }}</h3>
             <h3 class="last">{{ contact.email }}</h3>
-            <hr>
-            <aside class="actions">
-                <button class="btn-edit" @click="editContact(contact._id)">Edit</button>
-                <button class="btn-remove" @click="removeContact(contact._id)">Remove</button>
-            </aside>
             <hr>
             <div class="transfers">
                 <h3>Transfer coins to {{ contact.name }}</h3>

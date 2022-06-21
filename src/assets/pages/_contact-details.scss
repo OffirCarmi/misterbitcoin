@@ -1,8 +1,8 @@
 .contact-details {
-    padding-top: 25px;
+    padding: 55px 0 50px;
 
     h1 {
-        margin-bottom: 25px;
+        margin-bottom: 50px;
     }
 
     .contact-data {
@@ -14,18 +14,22 @@
         padding: 25px;
         width: 400px;
 
+        .actions {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
 
+            button {
+                margin: 0;
+            }
 
-        button {
-            margin: 0 auto;
-            align-self: flex-start;
-            background-color: $bg;
-            color: $brand;
+            .btn-edit {
+                background-color: $bg;
+                color: $brand;
 
-            &.btn-back {
-                margin-inline-start: 0;
             }
         }
+
 
         h2 {
             color: $brand;
@@ -87,6 +91,10 @@
                     justify-content: space-between;
                     // padding: 10px;
 
+                    a {
+                        display: none;
+                    }
+
                     h4 {
                         font-weight: 400;
 
@@ -99,6 +107,7 @@
                     h5 {
                         font-weight: 600;
                         font-style: italic;
+                        align-self: flex-end;
                     }
                 }
             }

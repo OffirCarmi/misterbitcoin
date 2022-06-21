@@ -39,29 +39,18 @@ export default {
 /* apply transition to moving elements */
 .list-enter-active,
 .list-leave-active {
-    transition: all 0.5s ease;
+    transition: all 0.6s ease;
 }
 
 .list-enter-from,
 .list-leave-to {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateY(100px);
 }
 
 /* ensure leaving items are taken out of layout flow so that moving
    animations can be calculated correctly. */
 .list-leave-active {
     position: absolute;
-}
-
-/* we will explain what these classes do next! */
-.v-enter-active,
-.v-leave-active {
-    transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
 }
 </style>

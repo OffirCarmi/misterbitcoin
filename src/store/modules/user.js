@@ -32,6 +32,7 @@ export default {
         },
 
         logout({ commit }) {
+            storageService.save('loggedinUser', null)
             commit({ type: 'logout' })
         },
 

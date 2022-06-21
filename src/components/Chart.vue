@@ -4,58 +4,87 @@
 </template>
 
 <script>
-import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+import { Bar } from "vue-chartjs";
+import {
+    Chart as ChartJS,
+    Title,
+    Tooltip,
+    // Legend,
+    BarElement,
+    CategoryScale,
+    LinearScale,
+} from "chart.js";
+ChartJS.register(
+    Title,
+    Tooltip,
+    // Legend,
+    BarElement,
+    CategoryScale,
+    LinearScale
+);
 
 export default {
-    name: 'BarChart',
+    name: "BarChart",
     components: { Bar },
     props: {
-        data: {
-            type: Array,
-            required: true
-        },
         chartId: {
             type: String,
-            default: 'bar-chart'
+            default: "bar-chart",
         },
         datasetIdKey: {
             type: String,
-            default: 'label'
+            default: "label",
         },
         width: {
             type: Number,
-            default: 400
+            default: 100,
         },
         height: {
             type: Number,
-            default: 400
+            default: 50,
         },
         cssClasses: {
-            default: '',
-            type: String
+            default: "",
+            type: String,
         },
         styles: {
             type: Object,
-            default: () => { }
+            default: () => { },
         },
         plugins: {
             type: Array,
-            default: () => []
-        }
+            default: () => [],
+        },
+        labels: {
+            type: Array,
+            default: () => [],
+        },
+        data: {
+            type: Array,
+            default: () => [],
+        },
     },
+    // created() {
+    //     console.log('this.data', this.data);
+    //     console.log('this.labels', this.labels);
+    // },
     data() {
         return {
             chartData: {
-                labels: ['January', 'February', 'March'],
-                datasets: [{ data: [...this.data] }]
+                labels: this.labels,
+                datasets: [{
+                    data: this.data,
+                    backgroundColor: '#8dbf41'
+                }],
             },
+
             chartOptions: {
-                responsive: true
-            }
-        }
-    }
-}
+                responsive: true,
+            },
+        };
+    },
+};
 </script>
+
+<style>
+</style>

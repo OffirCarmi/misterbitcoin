@@ -4,7 +4,7 @@
         <nav>
             <RouterLink to="/home">Home</RouterLink>
             <RouterLink to="/contacts">Contacts</RouterLink>
-            <RouterLink to="/statistics">Statistics</RouterLink>
+            <RouterLink to="/statistics">Dashboard</RouterLink>
             <p v-if="user" @click="logout">Logout</p>
         </nav>
     </header>
@@ -16,7 +16,7 @@ export default {
         goHome() {
             this.$router.push('/home')
         },
-        
+
         logout() {
             this.$store.dispatch({ type: 'logout' })
             this.$router.push('/')
