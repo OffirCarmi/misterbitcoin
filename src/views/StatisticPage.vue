@@ -1,6 +1,8 @@
 <template>
-    <h1>Statistics</h1>
-    <Chart :data="marketPrice" />
+    <section class="statistics">
+        <h1>Statistics</h1>
+        <Chart v-if="user" :data="marketPrice" />
+    </section>
 </template>
 
 <script>
@@ -14,10 +16,19 @@ export default {
 
         }
     },
+
     async created() {
+        if (!this.user) this.$router.push('/')
+
         this.marketPrice = await bitcoinService.getMarketPrice()
-        // this.marketPrice = bitcoinService.getMarketPrice()
     },
+
+    computed: {
+        user() {
+            return this.$store.getters.loggedinUser
+        }
+    },
+
     components: {
         Chart
     }

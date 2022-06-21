@@ -1,0 +1,107 @@
+.contact-details {
+    padding-top: 25px;
+
+    h1 {
+        margin-bottom: 25px;
+    }
+
+    .contact-data {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        background-color: $white;
+        box-shadow: 1px 1px 3px $black-opc;
+        padding: 25px;
+        width: 400px;
+
+
+
+        button {
+            margin: 0 auto;
+            align-self: flex-start;
+            background-color: $bg;
+            color: $brand;
+
+            &.btn-back {
+                margin-inline-start: 0;
+            }
+        }
+
+        h2 {
+            color: $brand;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            font-weight: 400;
+
+            &.last {
+                margin-bottom: 0;
+            }
+        }
+
+        .actions {
+            margin: 0 auto;
+
+            &>* {
+                margin: 0 15px;
+            }
+        }
+
+        .transfers {
+
+            h3 {
+                color: $brand;
+                margin-bottom: 20px;
+            }
+
+            form {
+                display: flex;
+                justify-content: center;
+                gap: 25px;
+                margin-bottom: 30px;
+
+                input {
+                    width: 100px;
+                    text-align: center;
+                }
+
+                button {
+                    margin: 0;
+                    background-color: $brand;
+                    color: $bg;
+                }
+            }
+
+            .transfers-history {
+                background-color: $bg;
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+
+                .transaction-preview {
+                    display: flex;
+                    justify-content: space-between;
+                    // padding: 10px;
+
+                    h4 {
+                        font-weight: 400;
+
+                        span {
+                            color: $brand;
+                            font-weight: 600;
+                        }
+                    }
+
+                    h5 {
+                        font-weight: 600;
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+}

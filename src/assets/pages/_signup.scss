@@ -1,0 +1,44 @@
+.signup {
+    margin: 50px auto 0;
+    padding: 50px;
+    width: fit-content;
+    background-color: $white;
+    box-shadow: 1px 1px 3px $black-opc;
+
+
+    .teaser {
+        margin-bottom: 50px;
+
+        h1 {
+            color: $brand;
+            font-size: rem(40px);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-weight: 800;
+        }
+    }
+
+    form {
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+
+        input {
+            height: 50px;
+            text-align: center;
+            align-self: flex-start;
+            font-size: rem(20px);
+        }
+
+        button {
+            height: 50px;
+            align-self: flex-start;
+            background-color: $brand;
+            color: $bg;
+            padding: 15px 25px;
+        }
+    }
+
+}

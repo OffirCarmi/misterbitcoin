@@ -5,6 +5,7 @@ import ContactApp from '../views/ContactApp.vue'
 import ContactDetails from '../views/ContactDetails.vue'
 import ContactEdit from '../views/ContactEdit.vue'
 import StatisticPage from '../views/StatisticPage.vue'
+import Signup from '../views/Signup.vue'
 
 
 const router = createRouter({
@@ -12,6 +13,10 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      component: Signup
+    },
+    {
+      path: '/home',
       component: Home
     },
     {
@@ -29,6 +34,11 @@ const router = createRouter({
     {
       path: '/statistics',
       component: StatisticPage
+    }
+    ,
+    {
+      path: '/signup',
+      component: Signup
     }
   ]
 })

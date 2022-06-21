@@ -7,6 +7,11 @@
     background-color: $brand;
     color: $bg;
 
+    h1 {
+        font-size: rem(25px);
+        cursor: pointer;
+    }
+
     nav {
         display: flex;
         gap: 20px;
@@ -16,6 +21,11 @@
         }
 
         a.router-link-active {
+            color: $coin;
+        }
+
+        p {
+            cursor: pointer;
             color: $clr2;
         }
     }

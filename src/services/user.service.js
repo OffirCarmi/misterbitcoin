@@ -5,7 +5,9 @@
 // const KEY = 'user_db'
 
 export const userService = {
-    getUser,
+    signup,
+    doTransfer
+    // getUser,
     // query,
     // get,
     // remove,
@@ -13,13 +15,37 @@ export const userService = {
     // getEmptyCar,
 }
 
-function getUser() {
+function signup(credential) {
     return {
-        name: 'Mister user',
+        name: credential,
         coins: 100,
         moves: []
     }
 }
+
+
+function doTransfer(transfer) {
+    const { from, to, amount } = transfer
+    if (from.coins - amount < 0) return
+    else {
+        const user = JSON.parse(JSON.stringify(from))
+        user.coins -= amount
+        user.moves.unshift({
+            to,
+            amount,
+            date: Date.now()
+        })
+        return user
+    }
+}
+
+// function getUser() {
+//     return {
+//         name: 'Mister user',
+//         coins: 100,
+//         moves: []
+//     }
+// }
 
 // async function query() {
 //     var cars = await dbService.query(KEY)

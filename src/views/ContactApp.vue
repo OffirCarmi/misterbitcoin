@@ -1,7 +1,9 @@
 <template>
-    <h1>Contacts</h1>
-    <ContactFilter @set-filter="onFilter" />
-    <ContactList :contacts="contactsToShow" />
+    <div class="contact-app">
+        <h1>Contacts</h1>
+        <ContactFilter @set-filter="onFilter" />
+        <ContactList :contacts="contactsToShow" />
+    </div>
 </template>
 
 <script>
@@ -18,10 +20,11 @@ export default {
     },
 
     async created() {
+        if (!this.user) this.$router.push('/')
         // this.contacts = await contactService.query()
         this.$store.dispatch({ type: 'loadContacts' })
-
     },
+
     methods: {
         onFilter(filterBy) {
             this.filterBy = filterBy
@@ -29,6 +32,9 @@ export default {
 
     },
     computed: {
+        user() {
+            return this.$store.getters.loggedinUser
+        },
         contacts() {
             return this.$store.getters.contacts
         },

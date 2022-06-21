@@ -4,7 +4,8 @@ import axios from 'axios'
 
 const RATE_URL = 'https://blockchain.info/tobtc?currency=USD&value=1'
 const MARKET_PRICE_URL = 'https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true'
-const TRANSACTIONS_URL = 'https://www.blockchain.com/charts/market-price?timespan=5months&format=json&cors=true'
+const TRANSACTIONS_URL = 'https://api.blockchain.info/charts/n-transactions?timespan=5months&format=json&cors=true'
+
 
 import { storageService } from '@/services/storage.service.js'
 
@@ -14,6 +15,18 @@ export const bitcoinService = {
     getConfirmedTransactions
 }
 
+// async function getRate(coins) {
+//     try {
+//         const res = await axios.get(RATE_URL + coins)
+//         return res.data
+
+//     } catch (err) {
+//         console.log('Cannot get data', err)
+//         throw err
+//     }
+// }
+
+// From cache
 async function getRate() {
     try {
         let rate = storageService.load('rate_DB')
@@ -47,12 +60,15 @@ async function getMarketPrice() {
     }
 }
 
+getConfirmedTransactions()
+
 async function getConfirmedTransactions() {
     try {
         let data = storageService.load('transactions_DB')
         if (!data || !data.length) {
             data = await axios.get(TRANSACTIONS_URL)
-            storageService.save('transactions_DB', data)
+            // console.log(data);
+            // storageService.save('transactions_DB', data)
         }
         return data
     } catch (err) {

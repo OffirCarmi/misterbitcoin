@@ -1,21 +1,25 @@
 .contact-list {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // gap: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    // grid-template-columns: repeat(3, minmax(175px, 1fr));
+    // grid-template-rows: repeat(5, 70px);
     gap: 25px;
     justify-items: center;
+    // grid-auto-flow: row;
+
 
 
     button {
         height: 40px;
         width: 175px;
         border-radius: 200px;
-        box-shadow: 1px 1px 3px $black-opc;
-        background-color: $white;
-        color: $clr2;
+        background-color: $bg;
+        color: $brand;
+
+        span {
+            font-weight: 600;
+            margin-inline-end: 5px;
+        }
     }
 
     .contact-preview {
@@ -24,7 +28,13 @@
         width: 175px;
         line-height: 40px;
         border-radius: 200px;
-        box-shadow: 1px 1px 3px $black-opc;
+
+        &:hover {
+            transform: scale(95%);
+            transition: scale, 0.25s;
+            box-shadow: 1px 1px 3px $black-opc;
+
+        }
 
         a {
             color: $bg;

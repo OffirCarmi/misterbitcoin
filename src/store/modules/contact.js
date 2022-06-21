@@ -4,6 +4,7 @@ export default {
     state: {
         contacts: [],
     },
+
     mutations: {
         setContacts(state, { contacts }) {
             state.contacts = contacts
@@ -51,6 +52,11 @@ export default {
     getters: {
         contacts(state) {
             return state.contacts
-        }
+        },
+        contactById(state) {
+            return (contactId) => state.contacts.find(({ _id }) => _id === contactId)
+        },
+
+
     }
 }

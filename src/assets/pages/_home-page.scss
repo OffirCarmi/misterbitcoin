@@ -1,0 +1,46 @@
+.home-page {
+    padding-top: 50px;
+
+    .user-profile {
+        h1 {
+            font-size: rem(40px);
+            margin-bottom: 50px;
+            color: $clr1;
+
+            span {
+                color: $clr2;
+            }
+        }
+
+        .info {
+            width: fit-content;
+            box-shadow: 1px 1px 3px $black-opc;
+            padding: 50px;
+            margin: 0 auto;
+            background-color: $brand;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            border-radius: 500px;
+
+
+            h3 {
+                color: $bg;
+                padding: 25px;
+                width: 200px;
+                border-radius: 200px;
+                box-shadow: 1px 1px 3px $black-opc;
+                background-color: $clr2;
+                font-weight: 400;
+
+                span {
+                    font-size: rem(25px);
+                    display: block;
+                    color: $coin;
+                    font-weight: 600;
+
+                }
+            }
+        }
+    }
+}

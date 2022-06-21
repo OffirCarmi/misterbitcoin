@@ -21,7 +21,7 @@ async function query() {
         // console.log('default contacts', contacts)
         await dbService.insert(KEY, contacts)
     }
-    return contacts
+    return _sort(contacts)
 }
 
 async function get(id) {
@@ -46,13 +46,34 @@ function getEmptyContact() {
     }
 }
 
+function _sort(arr) {
+    return arr.sort((a, b) => {
+      if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
+        return -1;
+      }
+      if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
+        return 1;
+      }
+  
+      return 0;
+    })
+  }
+
 function _createDefaultContacts() {
     return [
-        _createContact('David Porat', 'david@mail.com', '+972 (54) 4050-308'),
-        _createContact('Ran Shumel', 'ran_shmuel@mail.com', '+972 (54) 5060-408'),
-        _createContact('Osnat Perry', 'os-per@mail.com', '+972 (54) 6070-508'),
-        _createContact('Yaniv Moshe', 'moshe.yaniv@mail.com', '+972 (54) 7080-608'),
-        _createContact('Meital Lalush', 'mimila@mail.com', '+972 (54) 8090-708'),
+        _createContact('David Porat', 'david@mail.com', '+972 (50) 4040-328'),
+        _createContact('Ran Shumel', 'ran_shmuel@mail.com', '+972 (54) 5060-476'),
+        _createContact('Osnat Perry', 'os-per@mail.com', '+972 (54) 6270-543'),
+        _createContact('Yaniv Moshe', 'moshe.yaniv@mail.com', '+972 (50) 7080-608'),
+        _createContact('Meital Lalush', 'mimila@mail.com', '+972 (54) 8030-548'),
+        _createContact('Shalev Yehuda', 'shashayu@mail.com', '+972 (54) 5090-720'),
+        _createContact('Or Pink', 'or.pink@mail.com', '+972 (52) 5394-720'),
+        _createContact('Yarden Lev', 'yar1988@mail.com', '+972 (50) 2264-260'),
+        _createContact('Ronit Bern', 'ronitbern@mail.com', '+972 (54) 6464-554'),
+        _createContact('Avi Alush', 'alush1@mail.com', '+972 (52) 6998-193'),
+        _createContact('Ron Cohen', 'ronco@mail.com', '+972 (54) 6677-012'),
+        _createContact('Debby Yardu', 'deb_yar@mail.com', '+972 (52) 9223-541'),
+        _createContact('Aharon Zomer', 'aa_zomer@mail.com', '+972 (54) 7003-234'),
     ]
 }
 

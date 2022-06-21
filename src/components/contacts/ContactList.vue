@@ -1,10 +1,10 @@
 <template>
     <section class="contact-list">
         <TransitionGroup name="list">
-            <button @click="addContact">Add new contact</button>
             <article v-for="contact in contacts" :key="contact._id" class="contact-preview">
                 <ContactPreview :contact="contact" />
             </article>
+            <button @click="addContact"><span>+</span> Add new contact</button>
         </TransitionGroup>
     </section>
 </template>
