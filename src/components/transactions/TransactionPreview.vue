@@ -1,4 +1,5 @@
 <template>
+    <h4 v-if="isHome">{{ toContact }}</h4>
     <h4>Transfer of <span>{{ transaction.amount }}</span> coins</h4>
     <h5> {{ date }}</h5>
 </template>
@@ -9,6 +10,10 @@ export default {
         transaction: {
             type: Object,
             required: true,
+        },
+        isHome: {
+            type: Boolean,
+            default: true
         }
     },
 
@@ -27,6 +32,9 @@ export default {
             if (diff <= 24) return ` ${Math.floor(diff)} ${diff < 1 ? 'hour ago' : 'hours ago'}`
             const date = new Date(this.transaction.date)
             return ` at ${date.getDate()}/${date.getMonth()}/${date.getFullYear()} `
+        },
+        toContact() {
+            return this.transaction.to.name
         }
     }
 

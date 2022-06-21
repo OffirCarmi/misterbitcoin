@@ -1,11 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
+import Signup from '../views/Signup.vue'
 import Home from '../views/Home.vue'
 import ContactApp from '../views/ContactApp.vue'
 import ContactDetails from '../views/ContactDetails.vue'
 import ContactEdit from '../views/ContactEdit.vue'
 import StatisticPage from '../views/StatisticPage.vue'
-import Signup from '../views/Signup.vue'
 
 
 const router = createRouter({

@@ -40,6 +40,7 @@ export default {
         },
         contactsToShow() {
             const regex = new RegExp(this.filterBy.txt, 'i')
+            // const regexPhone = /^[\+][0-9]{1,3}?[-\s\.][(]?[0-9]{2}[)][-\s\.]?[0-9]{4}[-][0-9]{3}$/g
             return this.contacts.filter(contact => regex.test(contact.name) || regex.test(contact.phone))
         }
     },

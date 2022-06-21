@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import car from './modules/car.js'
+
 import contact from './modules/contact.js'
 import user from './modules/user.js'
 
@@ -22,7 +22,6 @@ const storeOptions = {
         count(state) { return state.count }
     },
     modules:{
-        car,
         contact,
         user
     }

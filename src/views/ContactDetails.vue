@@ -24,7 +24,7 @@
                     <div class="transfers-history">
                         <article v-for="transaction in transactions" :key="transaction.date"
                             class="transaction-preview">
-                            <TransactionPreview :transaction="transaction" />
+                            <TransactionPreview :transaction="transaction" :isHome="false" />
                         </article>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ export default {
     data() {
         return {
             // contact: null,
-            transactions: [],
+            // transactions: [],
             amount: null
         }
     },
@@ -90,6 +90,7 @@ export default {
             }
             await this.$store.dispatch({ type: 'transfer', transfer })
             this.$router.push(`/contacts/${this.contact._id}`)
+            this.amount = null
         }
 
     },
@@ -106,6 +107,11 @@ export default {
             //TODO: add error handeling
             if (contactId) return this.$store.getters.contactById(contactId)
             else return null
+        },
+        transactions() {
+            const moves = this.$store.getters.loggedinUser.moves
+            if (!moves) return
+            return moves.filter(move => move.to._id === this.contact._id)
         }
     },
     components: {

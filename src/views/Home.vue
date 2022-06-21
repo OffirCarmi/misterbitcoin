@@ -7,8 +7,11 @@
                 <h3><span>{{ rate }}</span> Rate</h3>
             </div>
         </div>
-        <div v-if="user.moves.length" class="user-transac">
-
+        <div v-if="user?.moves.length" class="user-transactions">
+            <h2>Your last activities</h2>
+            <article v-for="transaction in transactions" :key="transaction.date" class="transaction-preview">
+                <TransactionPreview :transaction="transaction" :isHome="true" />
+            </article>
         </div>
     </section>
 </template>
@@ -16,6 +19,8 @@
 <script>
 import { userService } from '../services/user.service'
 import { bitcoinService } from '../services/bitcoin.service'
+
+import TransactionPreview from '@/components/transactions/TransactionPreview.vue'
 
 export default {
     data() {
@@ -48,7 +53,14 @@ export default {
     computed: {
         user() {
             return this.$store.getters.loggedinUser
+        },
+        transactions() {
+            const transactions = [...this.user.moves]
+            return transactions.splice(0, 3)
         }
+    },
+    components: {
+        TransactionPreview
     }
 }
 </script>

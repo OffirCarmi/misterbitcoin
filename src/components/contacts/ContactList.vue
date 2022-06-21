@@ -4,8 +4,8 @@
             <article v-for="contact in contacts" :key="contact._id" class="contact-preview">
                 <ContactPreview :contact="contact" />
             </article>
-            <button @click="addContact"><span>+</span> Add new contact</button>
         </TransitionGroup>
+        <button @click="addContact"><span>+</span> Add new contact</button>
     </section>
 </template>
 
@@ -34,5 +34,34 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
+.list-move,
+/* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+    position: absolute;
+}
+
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
 </style>
